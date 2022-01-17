@@ -1,0 +1,118 @@
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 1280px;
+  gap: 40px;
+  margin: 40px auto;
+  padding: 0 40px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 10px;
+  border: 1px solid #d3d3d3;
+  gap: 20px;
+  height: min-content;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.header >.title{ 
+  justify-self: start;
+}
+
+.header > .-search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  width: 125%;
+  justify-content: space-between;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.header > .-search-bar > .input {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 5px;
+}
+
+.header > .-search-bar > .button.-search,
+.header > .button.-filter {
+  width: 25px;
+  height: 25px;
+  padding: 3px;
+  background: none;
+  border: none;
+}
+
+.header > .button.-filter {
+  justify-self: end;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list > .list-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  justify-content: space-between;
+  gap: 15px;
+  align-items: center;
+}
+
+.list > .list-item > .input-group {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.list > .list-item.editing {
+  margin-top: 20px;
+}
+
+.list > .list-item.editing > .input-group {
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.input-group > label {
+  position: absolute;
+  top: -20px;
+}
+
+.input-group > input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+
+.input-group > .fas {
+  padding: 5px;
+}
+
+.filtered {
+  display: none !important;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/fontawesome/css/all.css">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Tasks List</title>
+</head>
+
+<body>
+  <section class="section -pending">
+    <div class="header">
+      <h2 class="title">Pendiente</h2>
+      <div class="input-group -search-bar">
+        <input type="text" name="" id="search-pending" class="input -search" placeholder="Search..." value="">
+        <button class="button -search"><i class="fas fa-search"></i></button>
+      </div>
+      <button class="button -filter"><i class="fas fa-sort-amount-down"></i></button>
+    </div>
+    <ul id="pending-tasks-list" class="list">
+
+
+
+    </ul>
+    <button id="add-pending" class="add-pending"><i class="fas fa-plus"></i></button>
+  </section>
+  <section class="section -completed">
+    <div class="header">
+      <h2 class="title">Completado</h2>
+      <div class="input-group -search-bar">
+        <input type="text" name="" id="search-completed" class="input -search" placeholder="Search..." value="">
+        <button class="button -search"><i class="fas fa-search"></i></button>
+      </div>
+      <button class="button -filter"><i class="fas fa-sort-amount-down"></i></button>
+    </div>
+    <ul id="completed-tasks-list" class="list">
+
+    </ul>
+    <button id="add-completed" class="add"><i class="fas fa-plus"></i></button>
+  </section>
+  <script type="module" src="./js/index.js"></script>
+</body>
+
+</html>
