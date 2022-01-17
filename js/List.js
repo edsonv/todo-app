@@ -10,7 +10,7 @@ class List {
     // let selectedList;
     // let unselectedList;
 
-    // Check with list is active
+    // Check which list is active
     if (task.checked) {
       this.selectedList = document.getElementById('completed-tasks-list');
       this.unselectedList = document.getElementById('pending-tasks-list');
@@ -36,6 +36,7 @@ class List {
       listElement.setAttribute('id', task.id);
       listElement.classList.add('list-item');
       checkboxElement.setAttribute('type', 'checkbox');
+      checkboxElement.setAttribute('checked', task.checked);
       checkboxElement.checked = task.checked;
       spanElement.classList.add('input-group');
       spanElement.innerText = task.content;
@@ -48,20 +49,20 @@ class List {
 
       // Add event listeners
       checkboxElement.addEventListener('change', () => {
+
         if (checkboxElement.checked) {
-          listElement.classList.add('checked');
+          this.unselectedList = document.getElementById('completed-tasks-list');
+          this.selectedList = document.getElementById('pending-tasks-list');
+          checkboxElement.setAttribute('checked', true);
           this.unselectedList.append(listElement);
-          checkboxElement.checked = true;
-          this.setTaskStatus(task.id, true);
-          completedList.push(task);
-          this.deleteTask(task.id);
+          this.setTaskStatus(task.id, checkboxElement.checked);
         } else {
-          listElement.classList.remove('checked');
-          this.selectedList.append(listElement);
-          checkboxElement.checked = false;
-          this.setTaskStatus(task.id, false);
-          pendingList.push(task);
-          this.deleteTask(task.id);
+          this.unselectedList = document.getElementById('pending-tasks-list');
+          this.selectedList = document.getElementById('completed-tasks-list');
+          checkboxElement.setAttribute('checked', false);
+          this.unselectedList.append(listElement);
+          this.list.push(task);
+          this.setTaskStatus(task.id, checkboxElement.checked);
         }
       });
       iconDelete.addEventListener('click', () => {
@@ -84,11 +85,12 @@ class List {
         spanElement.append(iconEdit);
       });
       iconAccept.addEventListener('click', () => {
+        task.content = inputElement.value;
+        inputElement.setAttribute('value', task.content);
         spanElement.innerText = inputElement.value;
-        inputElement.value = spanElement.innerText;
         listElement.classList.remove("editing");
         spanElement.append(iconEdit);
-        this.editTask(task.id, spanElement.innerText);
+        this.editTask(task.id, inputElement.value);
       });
 
       // Append to document
@@ -116,25 +118,23 @@ class List {
     const selector = document.getElementById(id);
     this.list.splice(taskId, 1);
     selector.remove();
-    // console.log(this.list);
   }
 
   searchTasks(content) {
-    const listItems = document.querySelectorAll('.list-item');
+    let listItems = Array.from(this.selectedList.children);
+    Array.from(listItems)
+      .filter(e => !e.textContent.toLowerCase().includes(content))
+      .forEach(e => e.classList.add('filtered'));
 
-    this.list.filter(e => !e.content.toLowerCase().includes(content))
-      .forEach(item => {
-        document.getElementById(item.id).classList.add('filtered');
-      });
-
-    this.list.filter(e => e.content.toLowerCase().includes(content))
-      .forEach(item => {
-        document.getElementById(item.id).classList.remove('filtered');
-      });
+    Array.from(listItems)
+      .filter(e => e.textContent.toLowerCase().includes(content))
+      .forEach(e => e.classList.remove('filtered'));
   }
 
+  // sortTasks(){}
+
   getTasks() {
-    return this.list;
+    console.log(this.list);
   }
 
 }

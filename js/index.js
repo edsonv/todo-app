@@ -11,12 +11,12 @@ let buttonAddCompleted = document.getElementById('add-completed');
 
 let counterId = 0;
 
-searchPending.addEventListener('input', (e) => {
+searchPending.addEventListener('keyup', (e) => {
   let input = e.target.value.trim().toLowerCase();
   pendingList.searchTasks(input);
 });
 
-searchCompleted.addEventListener('change', (e) => {
+searchCompleted.addEventListener('keyup', (e) => {
   let input = e.target.value.trim().toLowerCase();
   completedList.searchTasks(input);
 });

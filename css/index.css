@@ -12,7 +12,8 @@ html {
 body {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  max-width: 1280px;
+  max-width: 90%;
+  min-width: 542px;
   gap: 40px;
   margin: 40px auto;
   padding: 0 40px;
@@ -100,7 +101,8 @@ body {
 
 .input-group > label {
   position: absolute;
-  top: -20px;
+  top: -18px;
+  color: #e0e0e0;
 }
 
 .input-group > input {
@@ -115,4 +117,12 @@ body {
 
 .filtered {
   display: none !important;
+}
+
+@media (max-width:959.8px){
+  body {
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+  }
 }
