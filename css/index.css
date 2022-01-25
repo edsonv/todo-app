@@ -33,6 +33,7 @@ body {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
+  margin: 0 0 20px;
 }
 
 .header >.title{ 
@@ -122,7 +123,7 @@ body {
 @media (max-width:959.8px){
   body {
     grid-template-columns: none;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto auto;
     gap: 20px;
   }
 }
